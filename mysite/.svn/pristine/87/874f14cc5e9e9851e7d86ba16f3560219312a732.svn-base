@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<label for="submit">提交</label>
+	<form action="/admin/" method="post">{% csrf_token %}
+		帐号:<input type="" name="account" /> 密码:<input type="password"
+			name="password" /> <input type="submit" value="submit" id='submit' />
+	</form>
+</body>
+</html>
