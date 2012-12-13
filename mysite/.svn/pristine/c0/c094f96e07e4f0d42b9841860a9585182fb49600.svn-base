@@ -1,6 +1,0 @@
-<h2>Book_list({{description}})</h2>
-{% for book in object_list %}
-<ul>
-<li>{{book.title}}</li>
-</ul>
-{% endfor %}
