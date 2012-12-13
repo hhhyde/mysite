@@ -16,8 +16,8 @@ SITE_PATH = os.path.dirname(__file__)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'books', # Or path to database file if using sqlite3.
+        'ENGINE': 'sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': os.path.join(SITE_PATH, 'mysite.db').replace('\\', '/'), # Or path to database file if using sqlite3.
         'USER': 'ke', # Not used with sqlite3.
         'PASSWORD': '', # Not used with sqlite3.
         'HOST': 'localhost', # Set to empty string for localhost. Not used with sqlite3.
