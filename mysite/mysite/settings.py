@@ -12,12 +12,6 @@ TEMPLATE_DEBUG = True
 SEND_BROKEN_LINK_EMAILS = True#开启报错邮件功能
 SITE_PATH = os.path.dirname(__file__)
 
-EMAIL_HOST = localhost
-EMAIL_HOST_USER = 'EmailAdd'
-EMAIL_HOST_PASSWORD = 'Passwd'
-EMAIL_PORT = 25
-EMAIL_USE_TLS
-EMAIL_SUBJECT_PREFIX
 
 
 DATABASES = {
