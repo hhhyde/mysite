@@ -136,3 +136,6 @@ def test_cookie(request):
     request.session['name'] = 'ke'
     return HttpResponse(request.session['name'])
 
+def showascii(request):
+    return render_to_response('ascii.html')
+

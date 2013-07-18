@@ -2,7 +2,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from mysite.views import (hello, welcome, error, current_datetime, search,
 books_by_publisher, author_detail, author_list_plaintext,
-my_image, unruly_passengers_csv, hello_pdf, hello_cStringIO, login, index, modifyBookName, test_cookie)
+my_image, unruly_passengers_csv, hello_pdf, hello_cStringIO, login, index, modifyBookName, test_cookie,showascii)
 from mysite.books.views import about_pages
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -75,6 +75,7 @@ urlpatterns = patterns('',
      (r'^index$', index),
      (r'^book/(?P<id>.*)/(?P<title>.*)$', modifyBookName),
      (r'^test_cookie$', test_cookie),
+     (r'^ascii$', showascii),
 
     # 默认欢迎页
      url('^$', welcome),
