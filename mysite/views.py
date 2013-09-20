@@ -9,6 +9,7 @@ import csv
 from reportlab.pdfgen import canvas
 from cStringIO import StringIO
 from django.core.context_processors import csrf
+from CommonBus.jingdong import JD
 
 UNRULY_PASSENGERS = [146, 184, 235, 200, 226, 251, 299, 273, 281, 304, 203]
 class StaticVariable(object):
@@ -139,3 +140,8 @@ def test_cookie(request):
 def showascii(request):
     return render_to_response('ascii.html')
 
+def getRelByItem(request,item):
+    import CommonBus.jingdong
+    jd=JD()
+    lnk=jd.getRelationItem(item)
+    return HttpResponse(lnk)
