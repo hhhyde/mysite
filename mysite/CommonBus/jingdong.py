@@ -2,42 +2,70 @@
 '''
 Created on 2013-9-21
 
-@author: Matthew
+@author: Chris
 '''
 class JD(object):
+    '''
+        
+    '''
     def __init__(self):
         pass
-    def getId(self, url):
+    def __getId(self, url):
+        '''
+                        拿到Item.
+        '''
         return url.split('/')[-1][:-5]
 
-    def getUrl(self, url):
-        id = self.getId(url)
+    def __getUrl(self, url):
+        id = self.__getId(url)
         '''
-            默认按点击数来排序
+                        默认按点击数来排序
         '''
         return 'http://club.jd.com/bbs/%s-3-1-4.html' % id
     
-    def getCont(self, url):
-        orilnk = self.getUrl(url)
+    def __getCont(self, url):
+        orilnk = self.__getUrl(url)
         import urllib2
         return urllib2.urlopen(orilnk).read().decode('gbk', 'ignore').encode('utf8')
     
-    def makeUrlByItem(self, item):
+    def __makeUrlByItem(self, item):
         return 'http://item.jd.com/%s.html' % item
     
-    def getRelationItem(self, item):
-        url=self.makeUrlByItem(item)
-        cont = self.getCont(url)
+    def __getRelationItem(self, item, topNum=40):
+        '''
+            topNum默认是40，因为京东上面一个页面就显示有60个晒单帖链接，
+                            按照html排序1-40是当前页面显示的40个，后面20个是热度排行(
+                            某一个商品的所有晒单链接页面都会显示)，所以去掉
+        '''
+        url = self.__makeUrlByItem(item)
+        cont = self.__getCont(url)
         import re
         p = re.compile(r'http://club.jd.com/bbsDetail/.*_1.html')
         # 一共有60个，但是后面20个是热门排行，先不管
-        return p.findall(cont)[:40]
+        return p.findall(cont)[:topNum][:10]
+    
+    def __generateXml(self, urls):
+        print urls
+        import xml.dom.minidom, os
+        impl = xml.dom.minidom.getDOMImplementation()
+        dom = impl.createDocument(None, 'tasks', None)
+        root = dom.documentElement
+        for url in urls:
+            employee = dom.createElement('task')
+            employee.setAttribute('href', url)
+            root.appendChild(employee)
+        pass
+        xmlpath = os.path.join(os.path.dirname(__file__), '../templates/jingdong.xml').replace('\\', '/')
+        f = open(xmlpath, 'w')
+        dom.writexml(f, addindent='  ', newl='\n', encoding='utf-8')
+        f.close() 
+    
+    def refresh(self, item):
+        print item
+        self.__generateXml(self.__getRelationItem(item))
     
 if __name__ == '__main__':
-    # print
     jd = JD()
-#    a = jd.getRelationLnk('http://item.jd.com/404379.html')[:10]
-#    print a
-#    for temp in a:
-#        print temp
-    print jd.getRelationItem(1008557703)
+    print jd.refresh(841637)
+#    xml=open('../templates/jingdong.xml')
+#    print xml.read()
