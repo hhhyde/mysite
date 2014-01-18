@@ -1,15 +1,15 @@
 #encoding:utf-8
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls import patterns, include, url
 from mysite.views import (hello, welcome, error, current_datetime, search,
 books_by_publisher, author_detail, author_list_plaintext,
-my_image, unruly_passengers_csv, hello_pdf, hello_cStringIO, login, index, modifyBookName, test_cookie,showascii,getRelByItem)
+my_image, unruly_passengers_csv, hello_pdf, hello_cStringIO, login, index, modifyBookName, test_cookie,showascii,getRelByItem,wx,ltc,reminder,jqgrid)
 from mysite.books.views import about_pages
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
 admin.autodiscover()
 
-from django.conf.urls.defaults import *
+from django.conf.urls import *
 #from django.views.generic import list_detail
 #from django.views.generic.simple import direct_to_template
 from mysite.books.models import Publisher, Book
