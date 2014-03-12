@@ -19,9 +19,13 @@ class JD(object):
     def __getUrl(self, url):
         id = self.__getId(url)
         '''
-                        默认按点击数来排序
+                        默认按点击数来排序，
+        这里1-1-4的意义如下：
+        1：取第1页的链接，同理3是第三页
+        1：按回复数排序，0是时间，2是点击数
+        4：晒单贴标签，0是网友讨论贴，1是讨论贴，2是问答贴，3是圈子贴
         '''
-        return 'http://club.jd.com/bbs/%s-3-1-4.html' % id
+        return 'http://club.jd.com/bbs/%s-1-1-4.html' % id
     
     def __getCont(self, url):
         orilnk = self.__getUrl(url)
