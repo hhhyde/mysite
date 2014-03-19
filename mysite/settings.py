@@ -9,8 +9,7 @@ from urllib import localhost
 from dircache import cache
 DEBUG = True
 TEMPLATE_DEBUG = True
-SEND_BROKEN_LINK_EMAILS = True#庿¯报错邮件功能
-SITE_PATH = os.path.dirname(__file__)
+SEND_BROKEN_LINK_EMAILS = True#搴柯惵姤閿欓偖浠跺姛鑳�SITE_PATH = os.path.dirname(__file__)
 
 
 
@@ -18,8 +17,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'mysite', # Or path to database file if using sqlite3.
-        'USER': 'mysite', # Not used with sqlite3.
-        'PASSWORD': 'mysite', # Not used with sqlite3.
+        'USER': 'USER', # Not used with sqlite3.
+        'PASSWORD': 'PASSWORD', # Not used with sqlite3.
         'HOST': 'localhost', # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '3306', # Set to empty string for default. Not used with sqlite3.
     }
@@ -93,8 +92,8 @@ SECRET_KEY = '_z0iyti8tf3i@p9cn)(%k-+n7aq$44#hnwrrmwg!u84fm-2np8'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader', #这个加载器根据TEMPLATE_DIRS 的设置从文件系统加载模板
-    'django.template.loaders.app_directories.Loader', #他的作用是在setting的INSTALL_APP中的每个应用中的templates的子目录里找模板
+    'django.template.loaders.filesystem.Loader', #杩欎釜鍔犺浇鍣ㄦ牴鎹甌EMPLATE_DIRS 鐨勮缃粠鏂囦欢绯荤粺鍔犺浇妯℃澘
+    'django.template.loaders.app_directories.Loader', #浠栫殑浣滅敤鏄湪setting鐨処NSTALL_APP涓殑姣忎釜搴旂敤涓殑templates鐨勫瓙鐩綍閲屾壘妯℃澘
 #     'django.template.loaders.eggs.Loader',
 )
 
@@ -102,7 +101,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware', #用中文显碿    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.locale.LocaleMiddleware', #鐢ㄤ腑鏂囨樉纰�   'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
@@ -130,7 +129,7 @@ INSTALLED_APPS = (
      'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-     'django.contrib.sitemaps', #安装站点地图
+     'django.contrib.sitemaps', #瀹夎绔欑偣鍦板浘
 )
 
 # A sample logging configuration. The only tangible logging
