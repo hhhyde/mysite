@@ -10,7 +10,7 @@ from dircache import cache
 DEBUG = True
 TEMPLATE_DEBUG = True
 SEND_BROKEN_LINK_EMAILS = True#搴柯惵姤閿欓偖浠跺姛鑳�SITE_PATH = os.path.dirname(__file__)
-
+SITE_PATH = os.path.dirname(__file__)
 
 
 DATABASES = {
