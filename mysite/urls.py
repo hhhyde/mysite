@@ -3,7 +3,7 @@ from django.conf.urls import patterns, include, url
 from mysite.views import (hello, welcome, error, current_datetime, search,
 books_by_publisher, author_detail, author_list_plaintext,
 my_image, unruly_passengers_csv, hello_pdf, hello_cStringIO, login, index, modifyBookName, test_cookie, showascii, getRelByItem, wx, ltc, reminder, jqgrid)
-from mysite.jd.views import save
+from mysite.jd import views
 from mysite.books.views import about_pages
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -94,5 +94,5 @@ urlpatterns += patterns('',
 )
 # 主要加上京东(jd)相关的url配置
 urlpatterns += patterns('',
-    (r'^jd/save$', save),
+    (r'^jd/save$', views.save),
 )
