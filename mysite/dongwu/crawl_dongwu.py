@@ -23,7 +23,18 @@ def get_podcast_by_url(url):
     for a in div.ul.find_all('a'):
         print a
 
+def get_details(url):
+    context = urllib2.urlopen(url).read()
+    soup = BeautifulSoup(context)
+    print soup.find(id='mainContent_dongwu_mid_left_top_title',).string
+    print soup.find(id='mainContent_dongwu_mid_left_top_info').contents
 
 if __name__=='__main__':
     #get_podcast_by_url('http://dongwu.21cbr.com/84-1.html')
-    getpagelist('http://dongwu.21cbr.com/84-1.html')
+    #getpagelist('http://dongwu.21cbr.com/84-1.html')
+    get_details('http://www.21cbr.com/html/multimedia/audio/201101/24-7952.html')
+    
+    
+    
+    
+    #<a href="http://www.21cbr.com/html/multimedia/audio/201312/03-16192.html" target="_blank">冬吴相对论第408期:《“出格”的李书福》</a>
