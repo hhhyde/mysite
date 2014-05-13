@@ -46,7 +46,7 @@ class JD(object):
         import re
         p = re.compile(r'http://club.jd.com/bbsDetail/.*_1.html')
         # 一共有60个，但是后面20个是热门排行，先不管
-        return p.findall(cont)[:topNum][:10]
+        return p.findall(cont)[:topNum]
     
     def __generateXml(self, urls):
         print urls
