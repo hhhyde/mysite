@@ -64,9 +64,9 @@ class JD(object):
         dom.writexml(f, addindent='  ', newl='\n', encoding='utf-8')
         f.close() 
     
-    def refresh(self, item):
+    def refresh(self, item, display_post):
         print item
-        self.__generateXml(self.__getRelationItem(item))
+        self.__generateXml(self.__getRelationItem(item)[:display_post])
     
 if __name__ == '__main__':
     jd = JD()
