@@ -49,6 +49,8 @@ class JD(object):
         return p.findall(cont)[:topNum]
     
     def __generateXml(self, urls):
+        #去除重复的链接
+        urls = {}.fromkeys(urls).keys()
         import xml.dom.minidom, os
         impl = xml.dom.minidom.getDOMImplementation()
         dom = impl.createDocument(None, 'tasks', None)
