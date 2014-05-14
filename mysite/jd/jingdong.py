@@ -49,7 +49,6 @@ class JD(object):
         return p.findall(cont)[:topNum]
     
     def __generateXml(self, urls):
-        print urls
         import xml.dom.minidom, os
         impl = xml.dom.minidom.getDOMImplementation()
         dom = impl.createDocument(None, 'tasks', None)
@@ -65,7 +64,6 @@ class JD(object):
         f.close() 
     
     def refresh(self, item, display_post):
-        print item
         self.__generateXml(self.__getRelationItem(item)[:display_post])
     
 if __name__ == '__main__':

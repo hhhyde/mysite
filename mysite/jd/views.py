@@ -3,7 +3,10 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from mysite.jd.models import User
 from jingdong import JD
+from django.core.exceptions import ObjectDoesNotExist
+import logging
 
+logger = logging.getLogger('django.request')
 def save(request):
     user = User()
     user.ip = __get_ip(request)
@@ -16,7 +19,12 @@ def save(request):
 def getRelByItem(request, item):
     jd = JD()
     ip = __get_ip(request)
-    jd.refresh(item, User.objects.get(ip=ip).display_post)
+    display_post = 10
+    try:
+        display_post = User.objects.get(ip=ip).display_post
+    except ObjectDoesNotExist:
+        logger.warn("can't found config records by accessing user ip:%s, return default value 10" % ip)
+    jd.refresh(item, display_post)
     return render_to_response('jingdong.xml', mimetype="application/xml")
 
 def __get_ip(req):
