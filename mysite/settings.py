@@ -16,7 +16,7 @@ SITE_PATH = os.path.dirname(__file__)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'mysite', # Or path to database file if using sqlite3.
+        'NAME': 'mysql', # Or path to database file if using sqlite3.
         'USER': 'USER', # Not used with sqlite3.
         'PASSWORD': 'PASSWORD', # Not used with sqlite3.
         'HOST': 'localhost', # Set to empty string for localhost. Not used with sqlite3.
@@ -125,6 +125,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mysite.books',
+    'mysite.jd',
     # Uncomment the next line to enable the admin:
      'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -139,8 +140,34 @@ INSTALLED_APPS = (
 # more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'simple': {
+            'format': '%(levelname)s %(name)s %(asctime)s %(message)s'
+        },
+        'verbose': {
+            'format': '%(levelname)s %(pathname)s:%(lineno)d %(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+        'django_request':{
+            'format': '%(levelname)s %(asctime)s %(pathname)s %(module)s %(lineno)d %(message)s status_code:%(status_code)d',
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+        'django_db_backends':{
+            'format': '%(levelname)s %(asctime)s %(pathname)s %(module)s %(lineno)d %(message)s duration:%(duration).3f sql:%(sql)s params:%(params)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+    },
     'handlers': {
+        'null': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.NullHandler',
+        },
+        'console':{
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
@@ -150,9 +177,10 @@ LOGGING = {
     },
     'loggers': {
         'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
+            'handlers': ['console'],
+            'level': 'DEBUG',
+#            'format': '%(asctiome)s %(levelname)s %(module)s.%(funcName)s Line:%(lineno)d%(message)s',
+            'propagate': False,
         },
     },
     'filters': {

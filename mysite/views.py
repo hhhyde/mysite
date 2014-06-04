@@ -143,12 +143,6 @@ def test_cookie(request):
 def showascii(request):
     return render_to_response('ascii.html')
 
-def getRelByItem(request, item):
-    import CommonBus.jingdong
-    jd = JD()
-    lnk = jd.refresh(item)
-    return render_to_response('jingdong.xml', mimetype="application/xml")
-
 def wx(request):
     print '/wx Enter'
     wx = WeChat()
