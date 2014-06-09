@@ -4,6 +4,7 @@ from mysite.views import (hello, welcome, error, current_datetime, search,
 books_by_publisher, author_detail, author_list_plaintext,
 my_image, unruly_passengers_csv, hello_pdf, hello_cStringIO, login, index, modifyBookName, test_cookie, showascii, wx, ltc, reminder, jqgrid, dw)
 from mysite.jd import views as jd_views
+from mysite.dongwu import views as dw_views
 from mysite.books.views import about_pages
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -98,5 +99,5 @@ urlpatterns += patterns('',
 )
 # 主要加上冬吴的相关的url配置
 urlpatterns += patterns('',
-    (r'^dw$', dw)
+    (r'^dw/(?P<num>\d{0,})$', dw_views.get),
 )
