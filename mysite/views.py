@@ -179,3 +179,6 @@ def jqgrid(request):
         result.append({'id':price, 'invdate':time})
     a = [{'price':1, 'time':'2007-10-11'}, {'price':12, 'time':'2007-10-12'}]
     return render_to_response('myfirstgrid.html', {'LTCRecord':result})
+
+def dw(request):
+    return render_to_response('dw.html')
