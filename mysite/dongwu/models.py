@@ -13,9 +13,7 @@ class Dongwu(models.Model):
 
 class DongwuEncoder(json.JSONEncoder):
     def default(self, obj):
-        if isinstance(obj, Dongwu):
-            return '[title:%s, details:%s, url:%s]'%(obj.title,obj.details,obj.url)
-        return json.JSONEncoder.default(self, obj)
+        return obj.__dict__
 
 if __name__ == '__main__':
     import sys
