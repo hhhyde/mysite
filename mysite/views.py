@@ -143,17 +143,6 @@ def test_cookie(request):
 def showascii(request):
     return render_to_response('ascii.html')
 
-# def wx(request):
-#     print '/wx Enter'
-#     wx = WeChat()
-#     if request.method == 'POST':
-#         print 'post'
-#         return HttpResponse(wx.getMsg(request), content_type="application/xml")
-#     elif request.method == 'GET':
-#         print 'get'
-#         return HttpResponse(wx.checkSign(request))
-
-
 def ltc(request):
     ltc = open('/home/hhhyde/ServerMapping/LTCPriceRecord').readlines()
     ltc.reverse()
