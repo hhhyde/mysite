@@ -6,6 +6,7 @@ my_image, unruly_passengers_csv, hello_pdf, hello_cStringIO, login, index, modif
 from mysite.jd import views as jd_views
 from mysite.dongwu import views as dw_views
 from mysite.books.views import about_pages
+import wx_views
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
@@ -89,8 +90,7 @@ urlpatterns = patterns('',
 )
 # 主要加上微信(wx)相关的url配置
 urlpatterns += patterns('',
-    (r'^wx$', wx),
-    (r'^wx/1$', hello),
+    (r'^wx$', wx_views.wx),
 )
 # 主要加上京东(jd)相关的url配置
 urlpatterns += patterns('',
