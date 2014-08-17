@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     'mysite.books',
     'mysite.jd',
     'mysite.dongwu',
+    'mysite.chihuo',
     # Uncomment the next line to enable the admin:
      'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
