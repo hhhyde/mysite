@@ -17,6 +17,10 @@ class Pocily(models.Model):
         更新时间
     '''
     update_date = models.DateField()
+    '''
+        现在还能不能用此优惠
+    '''
+    valid=models.BooleanField()
     
     def __unicode__(self):
         return self.detail

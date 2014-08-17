@@ -8,8 +8,8 @@ def query_store(store_name):
 
 def query_pocily(store_name):
     store = Store.objects.get(name=store_name)
-    return store.pocilys.all()
+    return store.pocilys.filter(valid=True)
     
 if __name__ == "__main__":
     print 123
-    print query_pocily('秀玉')
+    print query_pocily('xxx')
