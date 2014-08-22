@@ -105,4 +105,7 @@ urlpatterns += patterns('',
 # 加上<吃货>的相关的url配置
 urlpatterns += patterns('',
     (r'^chihuo/query$', chihuo_views.query),
+    (r'^chihuo/add_store_show$', chihuo_views.add_store_show),
+    (r'^chihuo/add_store_submit$', chihuo_views.add_store_submit),
+    
 )
